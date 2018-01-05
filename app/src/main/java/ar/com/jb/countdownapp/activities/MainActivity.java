@@ -1,4 +1,4 @@
-package ar.com.jb.countdownapp;
+package ar.com.jb.countdownapp.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import ar.com.jb.countdownapp.R;
+import ar.com.jb.countdownapp.entities.Event;
 
 public class MainActivity extends AppCompatActivity {
 
