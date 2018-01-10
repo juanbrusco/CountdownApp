@@ -11,11 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon"
-        android:name="com.orm.SugarApp">
-        <meta-data android:name="DATABASE" android:value="data.db" />
-        <meta-data android:name="VERSION" android:value="1" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="ar.com.jb.countdownapp" />
+        android:name=".utils.MyAppClass">
+
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
@@ -25,6 +22,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CreateUpdateActivity"
+            android:label="@string/title_activity_create_update"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ar.com.jb.countdownapp.activities.MainActivity" />
         </activity>
     </application>
 
