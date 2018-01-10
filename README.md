@@ -1,5 +1,4 @@
 # CountdownApp
-===================
 Aplicación para realizar cuentas atrás de eventos.
 
 ----------
