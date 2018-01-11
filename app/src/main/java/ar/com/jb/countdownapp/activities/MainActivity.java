@@ -1,11 +1,13 @@
 package ar.com.jb.countdownapp.activities;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -43,13 +45,18 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
     private Typeface custom_font_regular;
     private Typeface custom_font_thin;
     private Typeface custom_font_bold;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.drawable.ic_launcher_background));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+        changeToolbarFont(toolbar, this);
 
         //Fonts
         custom_font_light = ContentManager.getInstance().getFontLight(getApplicationContext());
@@ -100,6 +107,22 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
         mAdapter.notifyDataSetChanged();
     }
 
+    public static void changeToolbarFont(Toolbar toolbar, Activity context) {
+        for (int i = 0; i < toolbar.getChildCount(); i++) {
+            View view = toolbar.getChildAt(i);
+            if (view instanceof TextView) {
+                TextView tv = (TextView) view;
+                if (tv.getText().equals(toolbar.getTitle())) {
+                    applyFont(tv, context);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void applyFont(TextView tv, Activity context) {
+        tv.setTypeface(ContentManager.getInstance().getFontLight(context));
+    }
 
     public void addRecord(View v) {
         Event event = new Event(null, "Movie", "17/03/2018", "Esta es la descripción", "#3fb0ac", "ic_airplane", true);
@@ -145,25 +168,25 @@ public class MainActivity extends AppCompatActivity implements RecyclerItemTouch
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }
