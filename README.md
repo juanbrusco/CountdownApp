@@ -20,3 +20,5 @@ https://github.com/amitshekhariitbhu/Android-Debug-Database
 https://codecrafted.net/randommaterial/
 > - Iconos Material:<br>
 https://material.io/icons/
+> - Tutorial Swipe:<br>
+https://www.androidhive.info/2017/09/android-recyclerview-swipe-delete-undo-using-itemtouchhelper/
