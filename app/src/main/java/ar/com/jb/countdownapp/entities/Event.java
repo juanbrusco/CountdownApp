@@ -14,7 +14,7 @@ public class Event {
     @Property
     private String title;
     @Property
-    private String createdAt;
+    private String limit_date;
     @Property
     private String description;
     @Property
@@ -24,17 +24,13 @@ public class Event {
     @Property
     private Boolean repeat;
 
-    public Event(Long id, String title) {
-        this.id = id;
-        this.title = title;
-    }
 
-    @Generated(hash = 730405091)
-    public Event(Long id, String title, String createdAt, String description,
+    @Generated(hash = 1646674106)
+    public Event(Long id, String title, String limit_date, String description,
             String color, String image, Boolean repeat) {
         this.id = id;
         this.title = title;
-        this.createdAt = createdAt;
+        this.limit_date = limit_date;
         this.description = description;
         this.color = color;
         this.image = image;
@@ -61,12 +57,12 @@ public class Event {
         this.title = title;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getLimit_date() {
+        return limit_date;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setLimit_date(String limit_date) {
+        this.limit_date = limit_date;
     }
 
     public String getDescription() {

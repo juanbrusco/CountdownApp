@@ -1,9 +1,7 @@
 package ar.com.jb.countdownapp.utils;
 
 import android.app.Application;
-
 import org.greenrobot.greendao.database.Database;
-
 import ar.com.jb.countdownapp.entities.DaoMaster;
 import ar.com.jb.countdownapp.entities.DaoSession;
 
@@ -18,7 +16,7 @@ public class MyAppClass extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "countdowndb");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "countdowndb_dev");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }

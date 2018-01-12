@@ -3,6 +3,7 @@ package ar.com.jb.countdownapp.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class ContentManager {
 
     }
 
-    public static SharedPreferences getPrefs(Context ctx){
+    public static SharedPreferences getPrefs(Context ctx) {
         return ctx.getSharedPreferences(Constants.MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
@@ -52,5 +53,22 @@ public class ContentManager {
             _instance = new ContentManager();
         }
         return _instance;
+    }
+
+    public Typeface getFontRegular(Context context) {
+        return Typeface.createFromAsset(context.getApplicationContext().getAssets(), Constants.FONT_REGULAR);
+    }
+
+    public Typeface getFontBold(Context context) {
+        return Typeface.createFromAsset(context.getApplicationContext().getAssets(), Constants.FONT_BOLD);
+    }
+
+    public Typeface getFontLight(Context context) {
+        return Typeface.createFromAsset(context.getApplicationContext().getAssets(), Constants.FONT_LIGHT);
+    }
+
+    public Typeface getFontThin(Context context) {
+        return Typeface.createFromAsset(context.getApplicationContext().getAssets(), Constants.FONT_THIN);
+
     }
 }

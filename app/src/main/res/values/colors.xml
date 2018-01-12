@@ -8,4 +8,7 @@
     <color name="primary">#9c27b0</color>
     <color name="primary_dark">#7b1fa2</color>
     <color name="accent">#ffd740</color>
+    <!--Items-->
+    <color name="swipe_delete_color">#fa315b</color>
+    <color name="description_color">#7e7e7e</color>
 </resources>

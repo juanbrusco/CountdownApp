@@ -20,3 +20,10 @@ https://github.com/amitshekhariitbhu/Android-Debug-Database
 https://codecrafted.net/randommaterial/
 > - Iconos Material:<br>
 https://material.io/icons/
+> - Tutorial Swipe:<br>
+https://www.androidhive.info/2017/09/android-recyclerview-swipe-delete-undo-using-itemtouchhelper/
+
+
+License and Attribution
+-----------------------
+Este proyecto utiliza iconos/imágenes de acuerdo a los términos y condiciones que se encuentran bajo la Licencia [Creative Commons Attribution 3.0 Unported License](http://creativecommons.org/licenses/by/3.0).
