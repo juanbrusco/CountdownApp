@@ -16,7 +16,7 @@ public class MyAppClass extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "countdowndb_dev");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "countdowndb_dev_1");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }

@@ -6,6 +6,8 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.util.Date;
+
 @Entity
 public class Event {
 

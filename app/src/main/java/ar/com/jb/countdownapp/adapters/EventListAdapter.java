@@ -2,6 +2,7 @@ package ar.com.jb.countdownapp.adapters;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
@@ -15,7 +16,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import ar.com.jb.countdownapp.R;
 import ar.com.jb.countdownapp.entities.Event;
@@ -32,6 +37,9 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
     private Typeface custom_font_light;
     private Typeface custom_font_regular;
     private Typeface custom_font_thin;
+    private String currentDate;
+    private Date initialDate;
+    private Date finalDate;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, limit_date, countdown;
@@ -59,9 +67,10 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
     }
 
 
-    public EventListAdapter(Context context, List<Event> eventList) {
+    public EventListAdapter(Context context, List<Event> eventList, String currentDate) {
         this.context = context;
         this.eventList = eventList;
+        this.currentDate = currentDate;
     }
 
     @Override
@@ -80,12 +89,10 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         holder.name.setText(event.getTitle());
         holder.name.setTextColor(Color.parseColor(color.toString()));
 
-        holder.limit_date.setText(event.getLimit_date());
-
-        holder.countdown.setText(getCountDown(event.getLimit_date()));
+        holder.limit_date.setText(event.getLimit_date().toString());
+        holder.countdown.setText(getCountDown(event.getLimit_date().toString()));
         holder.countdown.setTextColor(Color.parseColor(color.toString()));
 
-//        holder.thumbnail.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_airplane));
         holder.thumbnail.setImageResource(getImage(event.getImage().toString()));
         holder.thumbnail.setColorFilter(Color.parseColor(color.toString()));
 //        Glide.with(context)
@@ -94,9 +101,19 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
     }
 
     private String getCountDown(String limit_date) {
-        return "200";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            finalDate = sdf.parse(limit_date);
+            initialDate = sdf.parse(currentDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Long diff = finalDate.getTime() - initialDate.getTime();
+        System.out.println("Days: " + TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));
+        return diff.toString();
     }
 
+    //get image from drawables
     public int getImage(String imageName) {
         int drawableResourceId = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
         return drawableResourceId;
